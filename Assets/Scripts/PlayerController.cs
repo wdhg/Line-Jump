@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour {
             distance += speed * Time.deltaTime;
             distanceText.GetComponent<Text>().text = ((int) distance).ToString() + "m";
             if (transform.position.y == 0f) {
-                // Need to set a global speed variable. Right now everything is using 7f per second
                 Touch touch;
                 if (isPhoneApp) {
                     touch = Input.GetTouch (0);

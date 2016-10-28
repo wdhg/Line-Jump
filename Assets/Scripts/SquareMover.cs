@@ -9,8 +9,8 @@ public class SquareMover : MonoBehaviour {
     private PlayerController pc;
 
     void Awake () {
-        vertSpeed = (Random.value > 0.5f) ? pc.speed : -pc.speed;
         pc = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
+        vertSpeed = (Random.value > 0.5f) ? pc.speed : -pc.speed;
     }
 
     void Move () {
