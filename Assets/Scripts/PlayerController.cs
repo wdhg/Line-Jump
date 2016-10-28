@@ -5,9 +5,9 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float jumpForce, gravityScale;
-    public GameObject gameOverScreen, menuScreen, distanceText;
-    public Text endDistanceText;
-    [System.NonSerialized]
+    public GameObject gameOverScreen, menuScreen, distanceText; // distanceText is a GameObject so it can be disabled easily
+    public Text endDistanceText; // So we can set it to the distance variable
+    [System.NonSerialized] // Hide it from the unity inspector
     public bool alive;
 
     private Vector2 translation;
@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour {
     private float distance;
 
     void Start () {
-        alive = false;
-        ToggleText ();
+        alive = false; // Start of dead, so the menu can be shown
+        ToggleText (); // This hides the game over screen 
     }
 
     void ToggleText () {
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
         transform.Translate (translation);
     }
 
-    // Lost
+    // The player has lost
     void OnTriggerEnter2D (Collider2D other) {
         ToggleAlive ();
         ToggleText ();
