@@ -32,17 +32,13 @@ public class Spawner : MonoBehaviour {
     }
 
     // Takes position because it won't just be spawned at the spawner's location. Will change this to return a triangle object
-    public void MakeTriangle (Vector2 pos) {
-        GameObject newTriangle = (GameObject) Instantiate (triangle.hazardObject,
+    GameObject MakeTriangle (Vector2 pos) {
+            return (GameObject) Instantiate (triangle.hazardObject,
             pos,
             triangle.hazardObject.transform.rotation);
     }
 
     void MakeTriangleLine (bool upwards, int number) {
-        // Will remove this
-        if (number > triangle.lineCount) {
-            return;
-        }
         GameObject[] newTriangles = new GameObject[number];
         for (int index = 0; index < number; index++) {
             float yPos;
@@ -52,20 +48,20 @@ public class Spawner : MonoBehaviour {
             } else {
                 yPos = -index * (highestYPoint / number);
             }
-            // Will change this to call MakeTriangle instead
-            newTriangles[index] = (GameObject) Instantiate (triangle.hazardObject,
-                new Vector2 (transform.position.x, yPos),
-                triangle.hazardObject.transform.rotation);
+            Vector2 pos = new Vector2 (transform.position.x, yPos);
+            newTriangles[index] = MakeTriangle(pos);
         }
     }
 
-    // Need to make a MakeSquare function for this to call
+    GameObject MakeSquare (Vector2 pos) {
+        return (GameObject) Instantiate (square.hazardObject, pos, square.hazardObject.transform.rotation);
+    }
+
     void MakeSquares () {
         GameObject[] squares = new GameObject[square.lineCount];
         for (int index = 0; index < square.lineCount; index++) {
-            squares[index] = (GameObject) Instantiate (square.hazardObject,
-                new Vector2 (transform.position.x + index, 0f),
-                square.hazardObject.transform.rotation);
+            Vector2 pos = new Vector2 (transform.position.x + index, 0f);
+            squares[index] = MakeSquare (pos);
         }
     }
 
