@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 0.4
   gravityScale: 0.6
+  speed: 7
   gameOverScreen: {fileID: 481634262}
   menuScreen: {fileID: 1815050471}
   distanceText: {fileID: 1581672543}

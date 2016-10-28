@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TriangleMover : MonoBehaviour {
 
-    private float speed = 7f;
     private PlayerController pc;
 
     void Awake () {
@@ -11,7 +10,7 @@ public class TriangleMover : MonoBehaviour {
     }
 
     void Move () {
-        transform.Translate (new Vector2 (-speed * Time.deltaTime, 0f));
+        transform.Translate (new Vector2 (-pc.speed * Time.deltaTime, 0f));
         if (transform.position.x < -10f) {
             Destroy (transform.gameObject);
         }

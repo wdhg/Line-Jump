@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-    public float jumpForce, gravityScale;
+    public float jumpForce, gravityScale, speed;
     public GameObject gameOverScreen, menuScreen, distanceText; // distanceText is a GameObject so it can be disabled easily
     public Text endDistanceText; // So we can set it to the distance variable
     [System.NonSerialized] // Hide it from the unity inspector
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
             translation = Vector2.zero;
         }
         if (alive) {
-            distance += 3.5f * Time.deltaTime;
+            distance += speed * Time.deltaTime;
             distanceText.GetComponent<Text>().text = ((int) distance).ToString() + "m";
             if (transform.position.y == 0f) {
                 // Need to set a global speed variable. Right now everything is using 7f per second
