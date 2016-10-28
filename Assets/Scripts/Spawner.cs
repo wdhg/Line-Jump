@@ -31,7 +31,6 @@ public class Spawner : MonoBehaviour {
         return Random.value > 0.5f;
     }
 
-    // Takes position because it won't just be spawned at the spawner's location. Will change this to return a triangle object
     GameObject MakeTriangle (Vector2 pos) {
             return (GameObject) Instantiate (triangle.hazardObject,
             pos,
