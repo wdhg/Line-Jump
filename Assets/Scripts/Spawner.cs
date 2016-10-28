@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
 
     public Hazard triangle;
     public Hazard square;
-    public float maxSpawnTime, minSpawnTime, maxRandTime;
+    public float minSpawnTime, maxSpawnTime, maxRandTime;
     [System.NonSerialized] // Hide from unity inspector
     public float prevTime = 0f, randTime, spawnTime;
 
