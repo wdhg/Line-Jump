@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 
     void ToggleAlive () {
         alive = !alive;
-        endDistanceText.text = "DISTANCE: " + System.Math.Round(distance, 2).ToString() + "m";
+        endDistanceText.text = "DISTANCE: " + ((int) distance).ToString() + "m";
         distance = 0f;
     }
 
