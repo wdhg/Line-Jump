@@ -15,7 +15,9 @@ public class DifficultyIncrementer : MonoBehaviour {
     }
 
     void MakeHarder () {
-        spawner.minTime /= change;
+        if (spawner.spawnTime > spawner.minSpawnTime) {
+            spawner.spawnTime /= change;
+        }
     }
 
     void FixedUpdate () {

@@ -13,9 +13,9 @@ public class Spawner : MonoBehaviour {
 
     public Hazard triangle;
     public Hazard square;
-    public float maxMinTime, maxRandTime;
+    public float maxSpawnTime, minSpawnTime, maxRandTime;
     [System.NonSerialized] // Hide from unity inspector
-    public float prevTime = 0f, randTime, minTime;
+    public float prevTime = 0f, randTime, spawnTime;
 
     private PlayerController pc;
     private float highestYPoint = 5f; // The highest y point that the triangle objects can be spawned at
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
     void Awake () {
         pc = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
         totalChance += triangle.spawnChance + square.spawnChance;
-        minTime = maxMinTime;
+        spawnTime = maxSpawnTime;
     }
 
     bool RandomBool () {
@@ -81,12 +81,12 @@ public class Spawner : MonoBehaviour {
 
     void Update () {
         // If the player is alive and enough time has elapsed since the last spawn
-        if (pc.alive && prevTime + minTime + randTime < Time.time) {
+        if (pc.alive && prevTime + spawnTime + randTime < Time.time) {
             prevTime = Time.time;
             randTime = Random.Range (0f, maxRandTime);
             SpawnHazard ();
         } else if (!pc.alive) { // When the player is dead
-            minTime = maxMinTime;
+            spawnTime = maxSpawnTime;
         }
     }
 }
