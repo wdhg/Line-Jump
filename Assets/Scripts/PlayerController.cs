@@ -31,14 +31,19 @@ public class PlayerController : MonoBehaviour {
         distance = 0f;
     }
 
+    void UpdateDistance () {
+        // Cumulative distance
+        distance += speed * Time.deltaTime;
+        distanceText.GetComponent<Text> ().text = ((int) distance).ToString () + "m";
+    }
+
     void Move () {
         if (-.2f < transform.position.y && transform.position.y < .2f) {
             transform.position = Vector2.zero;
             translation = Vector2.zero;
         }
         if (alive) {
-            distance += speed * Time.deltaTime;
-            distanceText.GetComponent<Text>().text = ((int) distance).ToString() + "m";
+            UpdateDistance ();
             if (transform.position.y == 0f) {
                 Touch touch;
                 if (isPhoneApp) {
