@@ -802,7 +802,7 @@ MonoBehaviour:
     lineCount: 5
     spawnChance: 3
   square:
-    hazardObject: {fileID: 1000012456531792, guid: 0b3c53baec410014daf50cbbc371e804,
+    hazardObject: {fileID: 1000013497632178, guid: 0b3c53baec410014daf50cbbc371e804,
       type: 2}
     lineCount: 2
     spawnChance: 1
