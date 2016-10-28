@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     private float distance;
 
     void Start () {
-        alive = false; // Start of dead, so the menu can be shown
+        alive = false; // Start off dead, so the menu can be shown
         ToggleText (); // This hides the game over screen 
     }
 
