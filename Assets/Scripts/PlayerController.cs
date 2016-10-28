@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Move () {
+        // Added this so the player doesn't just fly past the middle
         if (-.2f < transform.position.y && transform.position.y < .2f) {
             transform.position = Vector2.zero;
             translation = Vector2.zero;
