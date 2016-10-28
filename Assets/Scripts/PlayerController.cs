@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
         // Long if statment. Checks if player is alive, the menu is disabled, and for a space press / tap by the user
         // Probs change in the future to a more neat solution
         if ((!alive && !menuScreen.activeSelf) && 
-            (Input.GetKeyDown (KeyCode.Space)  || (isPhoneApp && Input.touches[0].phase == TouchPhase.Began))) {
+            (Input.anyKeyDown  || (isPhoneApp && Input.touches[0].phase == TouchPhase.Began))) {
             ToggleAlive ();
             ToggleText ();
         }

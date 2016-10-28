@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKeyDown (KeyCode.Space) || (isPhoneApp && Input.touches[0].phase == TouchPhase.Began)) {
+        if (Input.anyKeyDown || (isPhoneApp && Input.touches[0].phase == TouchPhase.Began)) {
             pc.alive = true;
             // I call this here because it needs to be inversed to the game over screen and has to be shown after the menu screen
             pc.distanceText.SetActive (true);
