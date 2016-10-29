@@ -32,9 +32,7 @@ public class Spawner : MonoBehaviour {
     }
 
     GameObject MakeTriangle (Vector2 pos) {
-            return (GameObject) Instantiate (triangle.hazardObject,
-            pos,
-            triangle.hazardObject.transform.rotation);
+        return (GameObject) Instantiate (triangle.hazardObject, pos, triangle.hazardObject.transform.rotation);
     }
 
     void MakeTriangleLine (bool upwards, int number) {
@@ -48,7 +46,7 @@ public class Spawner : MonoBehaviour {
                 yPos = -index * (highestYPoint / number);
             }
             Vector2 pos = new Vector2 (transform.position.x, yPos);
-            newTriangles[index] = MakeTriangle(pos);
+            newTriangles[index] = MakeTriangle (pos);
         }
     }
 
