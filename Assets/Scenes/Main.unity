@@ -1040,7 +1040,7 @@ MonoBehaviour:
   triangle:
     hazardObject: {fileID: 1000013972626346, guid: 6981103d562fe494199596663162b64d,
       type: 2}
-    lineCount: 4
+    lineCount: 5
     spawnChance: 3
   square:
     hazardObject: {fileID: 1000013497632178, guid: 0b3c53baec410014daf50cbbc371e804,
