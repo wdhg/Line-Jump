@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
     public Text endDistanceText; // So we can set it to the distance variable
     [System.NonSerialized] // Hide it from the unity inspector
     public bool alive;
+    public AudioSource jumpUpSound;
+    public AudioSource jumpDownSound;
+    public AudioSource crashSound;
 
     private Vector2 translation;
     // Need this as otherwise it doesn't work
@@ -17,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         alive = false; // Start off dead, so the menu can be shown
-        ToggleText (); // This hides the game over screen 
+        ToggleText (); // This hides the game over screen
     }
 
     void ToggleText () {
@@ -55,8 +58,10 @@ public class PlayerController : MonoBehaviour {
 
                 if (Input.GetKey (KeyCode.UpArrow) || (isPhoneApp && touch.position.x < Screen.width / 2)) {
                     translation.y = jumpForce;
+                    jumpUpSound.Play ();
                 } else if (Input.GetKey (KeyCode.DownArrow) || (isPhoneApp && touch.position.x > Screen.width / 2)) {
                     translation.y = -jumpForce;
+                    jumpDownSound.Play ();
                 }
             }
         }
@@ -68,6 +73,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other) {
         ToggleAlive ();
         ToggleText ();
+        crashSound.Play ();
     }
 
     void FixedUpdate () {
@@ -77,7 +83,7 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         // Long if statment. Checks if player is alive, the menu is disabled, and for a space press / tap by the user
         // Probs change in the future to a more neat solution
-        if ((!alive && !menuScreen.activeSelf) && 
+        if ((!alive && !menuScreen.activeSelf) &&
             (Input.anyKeyDown  || (isPhoneApp && Input.touches[0].phase == TouchPhase.Began))) {
             ToggleAlive ();
             ToggleText ();
