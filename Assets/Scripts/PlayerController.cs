@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Text endDistanceText; // So we can set it to the distance variable
     [System.NonSerialized] // Hide it from the unity inspector
     public bool alive;
-    public AudioSource jumpUpSound;
-    public AudioSource jumpDownSound;
+    public AudioSource jumpSound;
     public AudioSource crashSound;
 
     private Vector2 translation;
@@ -58,10 +57,10 @@ public class PlayerController : MonoBehaviour {
 
                 if (Input.GetKey (KeyCode.UpArrow) || (isPhoneApp && touch.position.x < Screen.width / 2)) {
                     translation.y = jumpForce;
-                    jumpUpSound.Play ();
+                    jumpSound.Play ();
                 } else if (Input.GetKey (KeyCode.DownArrow) || (isPhoneApp && touch.position.x > Screen.width / 2)) {
                     translation.y = -jumpForce;
-                    jumpDownSound.Play ();
+                    jumpSound.Play ();
                 }
             }
         }
